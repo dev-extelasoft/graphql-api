@@ -2,7 +2,7 @@ import * as config from 'config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 interface IDatabaseConfig {
-  db: string;
+  database: string;
   user: string;
   password: string;
   port: number;
@@ -13,8 +13,8 @@ const dbConfig = config.get<IDatabaseConfig>('db');
 
 export const typeOrmSettings: TypeOrmModuleOptions = {
   type: 'postgres',
-  host: 'localhost' || dbConfig.host,
-  database: dbConfig.db,
+  host: dbConfig.host,
+  database: dbConfig.database,
   username: dbConfig.user,
   password: dbConfig.password,
   port: dbConfig.port,
@@ -23,3 +23,5 @@ export const typeOrmSettings: TypeOrmModuleOptions = {
   migrations: ['migrations/*.ts'],
   synchronize: true,
 };
+
+console.log('Here', typeOrmSettings);
