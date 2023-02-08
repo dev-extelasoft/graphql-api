@@ -23,5 +23,3 @@ export const typeOrmSettings: TypeOrmModuleOptions = {
   migrations: ['migrations/*.ts'],
   synchronize: true,
 };
-
-console.log('Here', typeOrmSettings);
